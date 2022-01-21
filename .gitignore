@@ -1,0 +1,15 @@
+.DS_Store
+
+# Vim
+
+# Ignore netrw history.
+dotfiles/dot-vim/.netrwhist
+
+# Ignore vim-plug stuff.
+dotfiles/dot-vim/plugged
+
+# Ignore swapfiles.
+dotfiles/dot-vim/.*.swp
+dotfiles/dot-vim/*/.*.swp
+dotfiles/dot-vim/*/*/.*.swp
+dotfiles/dot-vim/*/*/*/.*.swp

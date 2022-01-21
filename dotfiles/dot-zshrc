@@ -1,0 +1,121 @@
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/sam3llis/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/sam3llis/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/sam3llis/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/sam3llis/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export CLICOLOR=1
+# export TERM=xterm-256color
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+colors() {
+  color_vars=$(~/.config/kitty/colors $1)
+  # Eval ensures that proper env variables are loaded in real time
+  eval ${color_vars}
+}
+
+
+# ================
+# ===  Editor  ===
+# ================
+
+HAS_NVIM="false"
+type nvim >/dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+  HAS_NVIM="true"
+fi
+
+PREFER_NVIM="true"
+
+if [ "$HAS_NVIM" = "true" ] && [ "$PREFER_NVIM" = "true" ]; then
+  export EDITOR='nvim'
+  alias vim='nvim'
+  alias vi='nvim'
+else
+  export EDITOR='vim'
+fi
+export SUDO_EDITOR="$EDITOR"
+
+
+# ====================
+# ===  Keybindings ===
+# ====================
+
+# Use bash-like keybinds
+bindkey -e
+bindkey '^U' backward-kill-line
+bindkey '^Y' yank
+bindkey -s '^[3' \#
+
+# Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
+# Alt-arrows to jump words
+bindkey '^[b' backward-word
+bindkey '^[f' forward-word
+
+# Make Ctrl+W delete to '/' delimiter
+autoload -U select-word-style
+select-word-style bash
+
+# Enable reverse-i search
+bindkey "^R" history-incremental-pattern-search-backward
+
+
+# =================
+# ===  Options  ===
+# =================
+
+# -- General --
+
+# '#' is a comment.
+setopt interactivecomments
+
+# Extended globs.
+setopt extended_glob
+
+# No annoying beeps.
+setopt nobeep
+
+# Do not let '*' ever match dotfiles.
+setopt noglobdots
+
+# -- History --
+
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=1000000000
+SAVEHIST=1000000000
+
+# Append history list to the history file (important for multiple parallel zsh sessions!)
+setopt inc_append_history
+# Import new commands from the history file also in other zsh-session
+setopt share_history
+# Save each command's beginning timestamp and the duration to the history file
+setopt extended_history
+# First character is a space? Then do not save in history.
+setopt hist_ignore_space
+# Remove superfluous blanks before recording entries.
+setopt hist_reduce_blanks
+# Strictly not needed because we have hist_ignore_all_dups set above, but if it
+# wasn't set this would mean that searching history does not show dups.
+setopt hist_find_no_dups
+
+
+# ================
+# ===  Prompt  ===
+# ================
+
+# [user@host]~/path/to/pwd%
+# PROMPT='[%n@%m]%~%# '
