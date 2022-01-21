@@ -8,8 +8,12 @@ if (empty($TMUX))
   if (has("termguicolors"))
     set termguicolors
   endif
-
 endif
 
-set background=dark
-colorscheme one
+if has("nvim")
+  " let g:lightline = {'colorscheme': 'catppuccin'}
+  colorscheme catppuccin
+else
+  set background=dark
+  colorscheme one
+endif
