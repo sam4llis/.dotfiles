@@ -18,6 +18,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
 Plug 'jpalardy/vim-slime'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
@@ -33,7 +34,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 
 if has("nvim")
   Plug 'ggandor/lightspeed.nvim', {'branch' : 'smart-autojump'}
