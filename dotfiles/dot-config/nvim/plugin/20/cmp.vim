@@ -23,8 +23,8 @@ lua <<EOF
     },
 
   sources = ({
-    { name = "nvim_lsp", keyword_length = 2 },
-    { name = "buffer", keyword_length = 2 },
+    { name = "nvim_lsp", max_item_count = 10, keyword_length = 2 },
+    { name = "buffer", max_item_count= 5, keyword_length = 2 },
     { name = "ultisnips" },
   }),
 
