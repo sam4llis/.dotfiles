@@ -36,7 +36,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 
 if has("nvim")
-  " Plug 'ggandor/lightspeed.nvim', {'branch' : 'smart-autojump'}
+  Plug 'ggandor/lightspeed.nvim', {'branch' : 'smart-autojump'}
   Plug 'joechrisellis/nvim-vim-termbinds'
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-cmp'
@@ -51,6 +51,9 @@ endif
 
 " Colorschemes.
 Plug 'rakr/vim-one'
+if has("nvim")
+  Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+endif
 
 call plug#end()
 
