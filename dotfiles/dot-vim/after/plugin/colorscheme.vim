@@ -11,7 +11,6 @@ if (empty($TMUX))
 endif
 
 if has("nvim")
-  " let g:lightline = {'colorscheme': 'catppuccin'}
   colorscheme catppuccin
 else
   set background=dark

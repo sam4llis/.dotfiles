@@ -1,3 +1,3 @@
 " Use spell checking in markdown files.
 setlocal spell
-set cc=
+set textwidth=80
