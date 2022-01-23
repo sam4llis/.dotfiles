@@ -34,7 +34,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-" Plug 'vim-airline/vim-airline'
 
 if has("nvim")
   Plug 'ggandor/lightspeed.nvim', {'branch' : 'smart-autojump'}
