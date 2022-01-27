@@ -1,1 +1,1 @@
-setlocal statusline=netrw
+setlocal statusline=
