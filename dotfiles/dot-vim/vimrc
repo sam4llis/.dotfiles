@@ -47,6 +47,7 @@ if has("nvim")
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'mvllow/modes.nvim'
 endif
 
 " Colorschemes.
