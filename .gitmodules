@@ -1,3 +1,10 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
+
+[submodule "vim/pack/plugins/start/dadbod"]
+	path = vim/pack/plugins/start/dadbod
+	url = https://github.com/tpope/vim-dadbod
+[submodule "vim-dadbod"]
+	path = vim-dadbod
+	url = https://github.com/tpope/vim-dadbod
