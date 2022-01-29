@@ -2,7 +2,8 @@
 My dotfiles for Kitty, Vim, Neovim, and Zsh.
 
 ![Image of Neovim Config.](https://github.com/sam4llis/.dotfiles/blob/master/img/neovim-config.png)
-# Installtion
+
+# Installation
 To deploy the dotfiles run:
 
 ```
