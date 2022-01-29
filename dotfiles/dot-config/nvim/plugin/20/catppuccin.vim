@@ -33,7 +33,7 @@ lua << EOF
             cmp = true,
             lsp_saga = false,
             gitgutter = true,
-            gitsigns = false,
+            gitsigns = true,
             telescope = true,
             nvimtree = {
                 enabled = false,
