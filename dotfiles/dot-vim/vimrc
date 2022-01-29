@@ -1,4 +1,4 @@
-"        _
+"       _
 " __   _(_)_ __ ___  _ __ ___
 " \ \ / / | '_ ` _ \| '__/ __|
 "  \ V /| | | | | | | | | (__
@@ -17,6 +17,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
 Plug 'jpalardy/vim-slime'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
@@ -48,7 +50,6 @@ if has("nvim")
   Plug 'feline-nvim/feline.nvim'
   Plug 'mvllow/modes.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'lewis6991/gitsigns.nvim'
 endif
 
 " Colorschemes.
