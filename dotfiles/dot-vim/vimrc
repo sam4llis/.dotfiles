@@ -34,9 +34,13 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 
 if has("nvim")
+  Plug 'feline-nvim/feline.nvim'
   Plug 'ggandor/lightspeed.nvim', {'branch' : 'smart-autojump'}
   Plug 'joechrisellis/nvim-vim-termbinds'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'lewis6991/gitsigns.nvim'
   Plug 'neovim/nvim-lspconfig'
+  Plug 'mvllow/modes.nvim'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/cmp-nvim-lsp'
@@ -45,10 +49,6 @@ if has("nvim")
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-telescope/telescope.nvim'
-  Plug 'feline-nvim/feline.nvim'
-  Plug 'mvllow/modes.nvim'
-  Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'lewis6991/gitsigns.nvim'
 endif
 
 " Colorschemes.
