@@ -1,6 +1,3 @@
-" General:
-let g:ultisnips_python_style = "numpy"
-
 function! SetupMarks() abort
   exe '0/def main/mark z'
   exe '0/import/mark i'
