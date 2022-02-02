@@ -1,4 +1,3 @@
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/sam3llis/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -14,16 +13,17 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-export CLICOLOR=1
-# export TERM=xterm-256color
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# export CLICOLOR=1
+# # export TERM=xterm-256color
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-colors() {
-  color_vars=$(~/.config/kitty/colors $1)
-  # Eval ensures that proper env variables are loaded in real time
-  eval ${color_vars}
-}
+# colors() {
+#   color_vars=$(~/.config/kitty/colors $1)
+#   # Eval ensures that proper env variables are loaded in real time
+#   eval ${color_vars}
+# }
 
+# export PATH=$PATH:/usr/local/go/bin
 
 # ================
 # ===  Editor  ===
