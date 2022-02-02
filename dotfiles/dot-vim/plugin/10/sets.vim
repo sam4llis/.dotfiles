@@ -54,12 +54,6 @@ set signcolumn=yes                              " Always show sign column.
 
 set foldopen=hor,mark,percent,quickfix,search,tag,undo
 
-" netrw settings.
-let g:netrw_banner=0                            " Disable netrw's header.
-let g:netrw_keepdir = 0                         " Keep the current directory the same as the browsing directory.
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'  " Hide dotfiles on load.
-hi! link netrwMarkFile Search                   " Highlight marked files.
-
 set encoding=utf-8
 
 " The Silver Searcher
