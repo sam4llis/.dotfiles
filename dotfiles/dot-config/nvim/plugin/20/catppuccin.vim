@@ -4,7 +4,7 @@ lua << EOF
 
     local settings = {
         transparent_background = false,
-        term_colors = false,
+        term_colors = true,
         styles = {
             comments = "italic",
             functions = "NONE",
@@ -32,7 +32,7 @@ lua << EOF
             lsp_trouble = false,
             cmp = true,
             lsp_saga = false,
-            gitgutter = true,
+            gitgutter = false,
             gitsigns = true,
             telescope = true,
             nvimtree = {
