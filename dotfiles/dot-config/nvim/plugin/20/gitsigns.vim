@@ -3,6 +3,7 @@ if !has("nvim-0.5.0")
 endif
 
 lua <<EOF
+
     require('gitsigns').setup {
         signs = {
             add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
