@@ -37,11 +37,15 @@ tnoremap <expr> ;## expand("##")
 nmap <leader>o "+y
 vnoremap <leader>o "+y
 
-" Telescope mappings.
 if has("nvim")
+    " Telescope mappings.
     nnoremap <leader>ff <cmd>Telescope find_files<CR>
     nnoremap <leader>fg <cmd>Telescope live_grep<CR>
     nnoremap <leader>fb <cmd>Telescope buffers<CR>
+
+    " Lightspeed mappings.
+    nmap ; <Plug>Lightspeed_;_ft
+    nmap , <Plug>Lightspeed_,_ft
 endif
 
 " Ragtag mappings.
