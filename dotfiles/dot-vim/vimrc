@@ -52,6 +52,7 @@ endif
 
 " Colorschemes.
 if has("nvim")
+  Plug 'EdenEast/nightfox.nvim'
   Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 endif
 
