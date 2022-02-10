@@ -48,10 +48,8 @@ if has("nvim")
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-telescope/telescope.nvim'
-endif
 
-" Colorschemes.
-if has("nvim")
+  " Colorschemes
   Plug 'EdenEast/nightfox.nvim'
   Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 endif
