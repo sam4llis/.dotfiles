@@ -38,6 +38,8 @@ set splitbelow splitright                       " Sane split behaviour.
 set wildmenu                                    " Command-mode completion.
 set wildmode=full
 
+set noshowmode                                  " Do not show modes in command line.
+
 " Tell Vim to look for tags in the directory of the current file, the working
 " directory, and in every parent directory, recursively.
 set tags=./tags;,tags;
