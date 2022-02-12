@@ -17,7 +17,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'jpalardy/vim-slime'
+" Plug 'jpalardy/vim-slime'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'tpope/vim-commentary'
