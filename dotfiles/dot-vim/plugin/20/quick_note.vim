@@ -1,4 +1,4 @@
-function! Quick_note() abort
+function! QuickNote() abort
   let path = "~/notes/"
   let file_name = path.strftime("note-%d-%m-%y.txt")
   " Empty buffer
