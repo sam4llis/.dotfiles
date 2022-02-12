@@ -56,6 +56,5 @@ endif
 call plug#end()
 
 if filereadable(expand('~/.vimrc.local'))
-  echo "FAIJDW"
   source ~/.vimrc.local
 endif
