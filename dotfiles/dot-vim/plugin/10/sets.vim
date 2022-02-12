@@ -55,10 +55,3 @@ set cursorcolumn cursorline                     " Cursor crosshair.
 set signcolumn=yes                              " Always show sign column.
 
 set foldopen=hor,mark,percent,quickfix,search,tag,undo
-
-" " The Silver Searcher
-" " Use ag over grep if available.
-" if executable('ag')
-"   set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
-"   set grepformat^=%f:%l:%c:%m " file:line:column:message
-" endif
