@@ -10,6 +10,5 @@ if (empty($TMUX))
 endif
 
 if has("nvim")
-  " colorscheme nightfox
   colorscheme catppuccin
 endif
