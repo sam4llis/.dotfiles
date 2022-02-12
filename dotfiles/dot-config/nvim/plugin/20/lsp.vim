@@ -4,7 +4,6 @@ endif
 
 " Saner completion experience.
 set completeopt=menuone,noinsert,noselect
-set shortmess+=c
 
 lua << EOF
 

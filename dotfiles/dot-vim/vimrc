@@ -55,8 +55,7 @@ endif
 
 call plug#end()
 
-packadd! matchit
-
 if filereadable(expand('~/.vimrc.local'))
+  echo "FAIJDW"
   source ~/.vimrc.local
 endif
