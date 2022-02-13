@@ -39,13 +39,16 @@ vnoremap <leader>o "+y
 
 if has("nvim")
     " Telescope mappings.
-    nnoremap <leader>ff <cmd>Telescope find_files<CR>
-    nnoremap <leader>fg <cmd>Telescope live_grep<CR>
-    nnoremap <leader>fb <cmd>Telescope buffers<CR>
+    nnoremap <silent> <leader>ff <cmd>Telescope find_files<CR>
+    nnoremap <silent> <leader>fg <cmd>Telescope live_grep<CR>
+    nnoremap <silent> <leader>fb <cmd>Telescope buffers<CR>
 
     " Lightspeed mappings.
     nmap ; <Plug>Lightspeed_;_ft
     nmap , <Plug>Lightspeed_,_ft
+
+    " Floating terminal mapping.
+    nnoremap <silent> <leader>t :call FloatTerminal()<CR>
 endif
 
 " Ragtag mappings.
