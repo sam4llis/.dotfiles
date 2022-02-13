@@ -6,7 +6,7 @@ lua << EOF
         transparent_background = false,
         term_colors = true,
         styles = {
-            comments = "italic",
+            comments = "NONE",
             functions = "NONE",
             keywords = "NONE",
             strings = "NONE",
@@ -17,16 +17,16 @@ lua << EOF
             native_lsp = {
                 enabled = true,
                 virtual_text = {
-                        errors = "italic",
-                        hints = "italic",
-                        warnings = "italic",
-                        information = "italic",
+                        errors = "NONE",
+                        hints = "NONE",
+                        warnings = "NONE",
+                        information = "NONE",
                 },
                 underlines = {
-                        errors = "underline",
-                        hints = "underline",
-                        warnings = "underline",
-                        information = "underline",
+                        errors = "NONE",
+                        hints = "NONE",
+                        warnings = "NONE",
+                        information = "NONE",
                 },
             },
             lsp_trouble = false,
