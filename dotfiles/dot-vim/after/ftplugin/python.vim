@@ -8,12 +8,11 @@ augroup python_marks
   autocmd BufEnter *.py silent! call SetupMarks()
 augroup END
 
-" Add shortcut for quickly running scripts.
-nnoremap <leader>r :w <bar> :vsp +term\ python\ %<cr>
+" Floating console.
+nnoremap <leader>c :call FloatTerminal('"python3"')<CR>
+
+" Floating script.
+nnoremap <leader>r :w <bar> :call FloatTerminal('"python3" "<C-r>%"')<CR>
 
 " Autocomplete Character Mappings:
 inoremap <buffer> __ ____<esc>hi
-
-" nnoremap <leader>c :call TerminalToggle()<CR>python3<CR><C-l>
-" Floating terminal mapping.
-nnoremap <leader>c :call FloatTerminal('"python3"')<CR>
