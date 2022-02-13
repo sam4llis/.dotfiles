@@ -105,8 +105,12 @@ function! ModeCurrent() abort
 endfunction
 
 
-function! GitBranch(git)
-    return ' ' . a:git
+function! GitBranch()
+  if exists('*fugitive#head()')
+    return ' ' . fugitive#head()
+  else
+    return ' ' . '[-] '
+  endif
 endfunction
 
 
@@ -124,33 +128,31 @@ function! ActiveLine()
     let statusline .= "%#ModeSpace#%{g:assets.bar}"                 " Spacer.
     let statusline .= '%#ModeText#%{ModeCurrent()}'                 " Content.
     let statusline .= "%#ModeSpace#%{g:assets.bar}"                 " Spacer.
-    let statusline .= '%#ModeSep#%{g:assets.slant_r2}'              " Right separation
+    let statusline .= '%#ModeSep#%{g:assets.slant_r2}'              " Right separation.
 
-    " Current Git Branch.
-    if exists('*fugitive#head()')
-      let statusline .= "%#GitSpace#%{g:assets.bar}"                " Spacer.
-      let statusline .= '%#GitText#%{GitBranch(fugitive#head())}'   " Content.
-      let statusline .= "%#GitSpace#%{g:assets.bar}"                " Spacer.
-      let statusline .= '%#GitSep#%{g:assets.slant_r2}'             " Right separation
-    endif
+  " Current Git Branch.
+    let statusline .= "%#GitSpace#%{g:assets.bar}"                  " Spacer.
+    let statusline .= '%#GitText#%{GitBranch()}'                    " Content.
+    let statusline .= "%#GitSpace#%{g:assets.bar}"                  " Spacer.
+    let statusline .= '%#GitSep#%{g:assets.slant_r2}'               " Right separation.
 
     " Filename.
     let statusline .= "%#FileNameSpace#%{g:assets.bar}"             " Spacer.
     let statusline .= '%#FileNameText#%t'                           " Content.
     let statusline .= "%#FileNameSpace#%{g:assets.bar}"             " Spacer.
     let statusline .= '%#FileNameText#%{&modified?"[+] ":""}'       " Content.
-    let statusline .= '%#FileNameSep#%{g:assets.slant_r2}'          " Right separation
+    let statusline .= '%#FileNameSep#%{g:assets.slant_r2}'          " Right separation.
 
     let statusline .= '%='
 
     " Filetype and File Icon.
-    let statusline .= '%#FileTypeSep#%{g:assets.slant_l}'           " Left separation
+    let statusline .= '%#FileTypeSep#%{g:assets.slant_l}'           " Left separation.
     let statusline .= "%#FileTypeSpace#%{g:assets.bar}"             " Spacer.
     let statusline .= "%#FileTypeText#%{FileIcon()}%{&filetype}"    " Content.
     let statusline .= "%#FileTypeSpace#%{g:assets.bar}"             " Spacer.
 
     " Parent Folder.
-    let statusline .= '%#ParentSep#%{g:assets.slant_l}'             " Left separation
+    let statusline .= '%#ParentSep#%{g:assets.slant_l}'             " Left separation.
     let statusline .= "%#ParentSpace#%{g:assets.bar}"               " Spacer.
     let statusline .= "%#ParentText# %{expand('%:p:h:t')}"         " Content.
     let statusline .= "%#ParentSpace#%{g:assets.bar}"               " Spacer.
