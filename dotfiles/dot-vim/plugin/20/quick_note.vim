@@ -24,12 +24,12 @@ function! QuickNote() abort
   execute "set colorcolumn=" . column
 
   if filereadable(expand(fname))
-    execute "norm G$"
+    execute "norm G0"
     execute "norm zz"
   else
     execute "norm GoNotes (".strftime("%d-%m-%y")."):"
     execute "norm G2o"
-    execute "norm Gi- "
+    execute "norm G0"
     execute "norm zz"
   endif
 
