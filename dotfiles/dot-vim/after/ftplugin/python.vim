@@ -9,10 +9,10 @@ augroup python_marks
 augroup END
 
 " Floating console.
-nnoremap <leader>c :call FloatTerminal('"python3"')<CR>
+nnoremap <buffer> <silent> <localleader>c :call FloatTerminal('"python3"')<CR>
 
 " Floating script.
-nnoremap <leader>r :w <bar> :call FloatTerminal('"python3" "<C-r>%"')<CR>
+nnoremap <buffer> <silent> <localleader>r :w <bar> :call FloatTerminal('"python3" "<C-r>%"')<CR>
 
 " Autocomplete Character Mappings:
 inoremap <buffer> __ ____<esc>hi
