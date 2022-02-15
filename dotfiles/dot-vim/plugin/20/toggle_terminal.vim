@@ -53,10 +53,8 @@ function! AddTerminal(...)
   call CreateFloatingWindow()
   if a:0 == 0
     terminal
-    " startinsert
   else
     call termopen(a:1)
-    " startinsert
   endif
 endfunction
 
@@ -67,4 +65,7 @@ function! ToggleFloatingTerminal()
   else
     call OpenFloatingTerminal()
   endif
+
+  " When the terminal buffer is closed, reset the floating buffer variable.
+  autocmd TermClose * let g:buf_floating = -1 | let g:window = 1
 endfunction
