@@ -48,7 +48,10 @@ if has("nvim")
     nmap , <Plug>Lightspeed_,_ft
 
     " Floating terminal mapping.
-    nnoremap <silent> <leader>t :call FloatTerminal()<CR>
+    " nnoremap <silent> <M-t> :call ToggleFloatingTerminal()<CR>
+    nnoremap <silent> <C-\><C-t> :call ToggleFloatingTerminal()<CR>
+    tnoremap <silent> <C-\><C-t> <C-\><C-n><C-W>:call ToggleFloatingTerminal()<CR>
+
 endif
 
 " Open the active file as a finder window.
