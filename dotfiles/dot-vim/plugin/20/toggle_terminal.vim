@@ -21,19 +21,21 @@ function! CreateFloatingWindow()
 endfunction
 
 
-function! CreateFloatingTerminal(...)
-  call CreateFloatingWindow()
-  if a:0 == 0
-    terminal
-  else
-    call termopen(a:1)
-  endif
-endfunction
+" function! CreateFloatingTerminal(...)
+"   call CreateFloatingWindow()
+"   if a:0 == 0
+"     terminal
+"   else
+"     call termopen(a:1)
+"   endif
+" endfunction
 
 
-function! OpenFloatingTerminal()
+function! OpenFloatingTerminal(...)
   if !bufexists(g:buf_floating)
-    call AddTerminal()
+    call call('AddTerminal', a:000)
+
+    " call AddTerminal()
     let g:buf_term = winbufnr(winnr())
   else
     call CreateFloatingWindow()
@@ -59,11 +61,23 @@ function! AddTerminal(...)
 endfunction
 
 
-function! ToggleFloatingTerminal()
+" function! ToggleFloatingTerminal()
+"   if win_gotoid(g:window)
+"     call CloseFloatingTerminal()
+"   else
+"     call OpenFloatingTerminal()
+"   endif
+
+"   " When the terminal buffer is closed, reset the floating buffer variable.
+"   autocmd TermClose * let g:buf_floating = -1 | let g:window = 1
+" endfunction
+
+function! ToggleFloatingTerminal(...)
   if win_gotoid(g:window)
     call CloseFloatingTerminal()
   else
-    call OpenFloatingTerminal()
+    " call OpenFloatingTerminal()
+    call call('OpenFloatingTerminal', a:000)
   endif
 
   " When the terminal buffer is closed, reset the floating buffer variable.
