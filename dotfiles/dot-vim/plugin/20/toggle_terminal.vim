@@ -1,9 +1,15 @@
+" TODO(sam3llis):
+" Add distinct toggle commands for terminal and REPL, so they can both be
+" toggled simultanously without affecting one another. This could maybe just
+" be a change from global to local parameters.
+" Also allow a way to visually select code to be sent to a REPL.
+
 if !has("nvim")
     finish
 endif
 
-let g:buf_floating = -1
-let g:window = -1
+let s:buf_floating = -1
+let s:window = -1
 
 function! CreateFloatingWindow()
   let ui = nvim_list_uis()[0] " Generate current UI dimensions.
@@ -13,39 +19,27 @@ function! CreateFloatingWindow()
   let row    = float2nr((&lines - height) / 2)
   let col    = float2nr((&columns - width) / 2)
 
-  let g:opts = {'relative': 'editor', 'width': width, 'height': height, 'row': row, 'col': col, 'style': 'minimal', 'border': 'rounded'}
+  let s:opts = {'relative': 'editor', 'width': width, 'height': height, 'row': row, 'col': col, 'style': 'minimal', 'border': 'rounded'}
 
-  let g:buf_floating = nvim_create_buf(v:false, v:true)        " Create a new buffer.
-  let g:window = nvim_open_win(g:buf_floating, v:true, g:opts) " Open the new buffer with window options.
-  call setwinvar(g:window, '&winhighlight', 'Normal:Normal')   " Set background color of the active terminal buffer.
+  let s:buf_floating = nvim_create_buf(v:false, v:true)        " Create a new buffer.
+  let s:window = nvim_open_win(s:buf_floating, v:true, s:opts) " Open the new buffer with window options.
+  call setwinvar(s:window, '&winhighlight', 'Normal:Normal')   " Set background color of the active terminal buffer.
 endfunction
 
 
-" function! CreateFloatingTerminal(...)
-"   call CreateFloatingWindow()
-"   if a:0 == 0
-"     terminal
-"   else
-"     call termopen(a:1)
-"   endif
-" endfunction
-
-
 function! OpenFloatingTerminal(...)
-  if !bufexists(g:buf_floating)
+  if !bufexists(s:buf_floating)
     call call('AddTerminal', a:000)
-
-    " call AddTerminal()
-    let g:buf_term = winbufnr(winnr())
+    let s:buf_term = winbufnr(winnr())
   else
     call CreateFloatingWindow()
-    silent! execute 'buffer ' . g:buf_term
+    silent! execute 'buffer ' . s:buf_term
 endif
 endfunction
 
 
 function! CloseFloatingTerminal()
-  if win_gotoid(g:window)
+  if win_gotoid(s:window)
     hide
   endif
 endfunction
@@ -61,19 +55,8 @@ function! AddTerminal(...)
 endfunction
 
 
-" function! ToggleFloatingTerminal()
-"   if win_gotoid(g:window)
-"     call CloseFloatingTerminal()
-"   else
-"     call OpenFloatingTerminal()
-"   endif
-
-"   " When the terminal buffer is closed, reset the floating buffer variable.
-"   autocmd TermClose * let g:buf_floating = -1 | let g:window = 1
-" endfunction
-
 function! ToggleFloatingTerminal(...)
-  if win_gotoid(g:window)
+  if win_gotoid(s:window)
     call CloseFloatingTerminal()
   else
     " call OpenFloatingTerminal()
@@ -81,5 +64,5 @@ function! ToggleFloatingTerminal(...)
   endif
 
   " When the terminal buffer is closed, reset the floating buffer variable.
-  autocmd TermClose * let g:buf_floating = -1 | let g:window = 1
+  autocmd TermClose * let s:buf_floating = -1
 endfunction
