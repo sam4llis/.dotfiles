@@ -178,4 +178,5 @@ augroup StatusLine
   autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine()
   autocmd WinLeave,BufLeave * setlocal statusline=%!InactiveLine()
   autocmd FileType netrw setlocal statusline=%!ActiveLine()
+  autocmd FileType,BufEnter dbui setlocal statusline=%!InactiveLine()
 augroup END
