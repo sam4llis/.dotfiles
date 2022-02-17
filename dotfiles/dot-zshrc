@@ -17,6 +17,8 @@ unset __conda_setup
 # ===  Editor  ===
 # ================
 
+TERM=xterm-256color
+
 HAS_NVIM="false"
 type nvim >/dev/null 2>&1
 if [ "$?" -eq "0" ]; then
