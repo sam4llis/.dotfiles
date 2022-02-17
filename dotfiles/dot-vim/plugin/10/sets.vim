@@ -1,30 +1,29 @@
 " These are set by default in Neovim.
 if !has("nvim")
 
-  syntax on
-  set autoindent                                " Copy indent from current line when starting a new line.
-  set backspace=indent,eol,start                " Sane backspacing behaviour.
-  set encoding=utf-8
-  set history=5000                              " Remember more cmdline history.
-  set hidden                                    " Hide buffers when abandoned.
-  set incsearch                                 " Search incrementally.
-  set laststatus=2
-  set nojoinspaces                              " Never add additional spacing when joining lines.
-  set listchars=tab:>-,trail:x,extends:>,precedes:<,nbsp:+
-  set ruler                                     " Enable ruler.
-  set shortmess+=c
-  set showcmd                                   " Show command in the last line of the screen.
-
-  " Tell Vim to look for tags in the directory of the current file, the working
-  " directory, and in every parent directory, recursively.
-  set tags=./tags;,tags;
-
-  set showcmd                                   " Show (partial) command in last line of screen.
-  set wildmenu                                  " Command-mode completion.
-
-  packadd! matchit
 
 endif
+
+syntax on
+set autoindent                                  " Copy indent from current line when starting a new line.
+set backspace=indent,eol,start                  " Sane backspacing behaviour.
+set encoding=utf-8
+set history=5000                                " Remember more cmdline history.
+set hidden                                      " Hide buffers when abandoned.
+set incsearch                                   " Search incrementally.
+set laststatus=2
+set nojoinspaces                                " Never add additional spacing when joining lines.
+set listchars=tab:>-,trail:x,extends:>,precedes:<,nbsp:+
+set ruler                                       " Enable ruler.
+set shortmess+=c
+set showcmd                                     " Show command in the last line of the screen.
+
+" Tell Vim to look for tags in the directory of the current file, the working
+" directory, and in every parent directory, recursively.
+set tags=./tags;,tags;
+
+set showcmd                                     " Show (partial) command in last line of screen.
+set wildmenu                                    " Command-mode completion.
 
 set path+=**
 set number relativenumber                       " Line numbering.
