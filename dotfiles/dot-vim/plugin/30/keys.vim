@@ -43,10 +43,6 @@ if has("nvim")
     nnoremap <silent> <leader>fg <cmd>Telescope live_grep<CR>
     nnoremap <silent> <leader>fb <cmd>Telescope buffers<CR>
 
-    " Lightspeed mappings.
-    nmap ; <Plug>Lightspeed_;_ft
-    nmap , <Plug>Lightspeed_,_ft
-
     " Floating terminal mapping.
     " nnoremap <silent> <M-t> :call ToggleFloatingTerminal()<CR>
     nnoremap <silent> <C-\><C-t> :call ToggleFloatingTerminal()<CR>

@@ -3,7 +3,7 @@ lua << EOF
     local catppuccin = require("catppuccin")
 
     local settings = {
-        transparent_background = false,
+        transparent_background = true,
         term_colors = true,
         styles = {
             comments = "NONE",
@@ -51,7 +51,7 @@ lua << EOF
             barbar = false,
             bufferline = false,
             markdown = true,
-            lightspeed = true,
+            lightspeed = false,
             ts_rainbow = false,
             hop = false,
             notify = false,
