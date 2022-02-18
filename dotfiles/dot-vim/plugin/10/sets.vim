@@ -1,9 +1,3 @@
-" These are set by default in Neovim.
-if !has("nvim")
-
-
-endif
-
 syntax on
 set autoindent                                  " Copy indent from current line when starting a new line.
 set backspace=indent,eol,start                  " Sane backspacing behaviour.
@@ -47,8 +41,8 @@ set splitbelow splitright                       " Sane split behaviour.
 set wildmode=full
 set noshowmode                                  " Do not show modes in command line.
 
-set foldcolumn=2                                " Set the width of the fold column.
-set scrolloff=5                                 " Set the minimum number of screen lines above/below cursor.
+set foldcolumn=auto                             " Set the width of the fold column.
+set scrolloff=10                                " Set the minimum number of screen lines above/below cursor.
 set sidescrolloff=10                            " Set the minimum number of screen lines left/right of the cursor.
 set cursorcolumn cursorline                     " Cursor crosshair.
 set signcolumn=yes                              " Always show sign column.
