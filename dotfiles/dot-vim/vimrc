@@ -38,14 +38,16 @@ if has("nvim")
   Plug 'joechrisellis/nvim-vim-termbinds'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'neovim/nvim-lspconfig'
-  Plug 'hrsh7th/nvim-cmp'
-  Plug 'hrsh7th/cmp-cmdline'
-  Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+
+  " nvim-cmp:
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/cmp-nvim-lsp'
 
   " Colorschemes
   Plug 'catppuccin/nvim', {'as': 'catppuccin'}

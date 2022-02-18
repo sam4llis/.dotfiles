@@ -1,13 +1,7 @@
-function! AutoDirectory()
-  let current_file = expand('%:p')
-  if getftype(current_file) == 'link'
-    let current_file = resolve(current_file)
-  endif
-  exe ':lcd' . fnamemodify(current_file, ':h')
-  :silent let git_dir = system('git rev-parse --git-dir')[:-2]
-  let is_not_git_dir = matchstr(git_dir, '^fatal:.*')
-  if empty(is_not_git_dir)
-    exe ':lcd' . fnamemodify(git_dir, ':p:h:h')
+function! AutoDirectory() abort
+  let l:fugitive_worktree = FugitiveWorkTree()
+  if !empty(l:fugitive_worktree)
+    execute 'lcd' . l:fugitive_worktree
   endif
 endfunction
 
