@@ -35,10 +35,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'hrsh7th/vim-vsnip'
 
 if has("nvim")
-  Plug 'ggandor/lightspeed.nvim', {'branch' : 'smart-autojump'}
-  Plug 'hoschi/yode-nvim'
   Plug 'joechrisellis/nvim-vim-termbinds'
-  Plug 'kyazdani42/nvim-web-devicons'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-cmp'
