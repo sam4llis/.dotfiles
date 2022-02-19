@@ -104,7 +104,7 @@ function! ActiveLine()
     let statusline .= '%#ModeText#%{ModeCurrent()}'               " Content.
     let statusline .= "%#ModeText#%{repeat('\ ', 3)}"             " Spacer.
 
-  " Current Git Branch.
+    " Current Git Branch.
     let statusline .= "%#GitText#%{repeat('\ ', 3)}"              " Spacer.
     let statusline .= "%#GitText#%{GitBranch()}"                  " Content.
     let statusline .= "%#GitText#%{repeat('\ ', 3)}"              " Spacer.
