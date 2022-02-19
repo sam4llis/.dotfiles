@@ -42,6 +42,7 @@ if has("nvim")
   " Telescope:
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
   " nvim-cmp:
   Plug 'hrsh7th/nvim-cmp'
