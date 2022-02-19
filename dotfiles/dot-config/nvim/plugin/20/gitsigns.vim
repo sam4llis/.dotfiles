@@ -12,20 +12,20 @@ lua <<EOF
             topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
             changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
         },
-        signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-        numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-        linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-        word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+        signcolumn = true,  -- :Gitsigns toggle_signs
+        numhl      = false, -- :Gitsigns toggle_numhl
+        linehl     = false, -- :Gitsigns toggle_linehl
+        word_diff  = false, -- :Gitsigns toggle_word_diff
         watch_gitdir = {
             interval = 1000,
             follow_files = true
         },
         attach_to_untracked = true,
-        current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+        current_line_blame = false,
         current_line_blame_opts = {
             virt_text = true,
             virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-            delay = 1000,
+            delay = 200,
             ignore_whitespace = false,
         },
         current_line_blame_formatter_opts = {
@@ -36,7 +36,6 @@ lua <<EOF
         status_formatter = nil, -- Use default
         max_file_length = 40000,
         preview_config = {
-            -- Options passed to nvim_open_win
             border = 'single',
             style = 'minimal',
             relative = 'cursor',
