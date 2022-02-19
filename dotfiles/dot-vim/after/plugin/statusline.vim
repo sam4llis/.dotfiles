@@ -1,12 +1,4 @@
-let g:assets = {
-  \ 'bar' : '█',
-  \ 'slant_l' : '',
-  \ 'slant_r' : '',
-  \ 'slant_l2' : '',
-  \ 'slant_r2' : '',
-  \ }
-
-let g:cp = {
+let s:cp = {
   \ 'rosewater': "#F5E0DC",
   \ 'flamingo': "#F2CDCD",
   \ 'mauve': "#DDB6F2",
@@ -31,18 +23,18 @@ let g:cp = {
   \ 'black0': "#161320",
   \ }
 
-let g:currentmode = {
+let s:currentmode = {
   \  'n' : 'NORMAL',
   \  'no' : 'N·OPERATOR PENDING',
   \  'v' : 'VISUAL',
-  \  'V' : 'V·LINE',
-  \  '^V' : 'V·BLOCK',
+  \  'V' : 'V-LINE',
+  \  '^V' : 'V-BLOCK',
   \  's' : 'SELECT',
-  \  'S': 'S·LINE',
-  \  '^S' : 'S·BLOCK',
+  \  'S': 'S-LINE',
+  \  '^S' : 'S-BLOCK',
   \  'i' : 'INSERT',
   \  'R' : 'REPLACE',
-  \  'Rv' : 'V·REPLACE',
+  \  'Rv' : 'V-REPLACE',
   \  'c' : 'COMMAND',
   \  'cv' : 'VIM EX',
   \  'ce' : 'EX',
@@ -53,7 +45,7 @@ let g:currentmode = {
   \  't' : 'TERMINAL'
   \  }
 
-let g:icons = {
+let s:icons = {
   \ 'python': ' ',
   \ 'typescript': ' ',
   \ 'html':  ' ',
@@ -70,36 +62,20 @@ let g:icons = {
   \ 'lua': ' ',
   \ }
 
-execute 'hi Base guifg=' . g:cp.black1 ' guibg=' . g:cp.black1
-execute 'hi ModeText guifg=' . g:cp.black1 ' guibg=' . g:cp.rosewater . ' gui=bold'
-execute 'hi ModeSpace guifg=' . g:cp.rosewater ' guibg=' . g:cp.black1
-execute 'hi ModeSep guifg=' . g:cp.rosewater ' guibg=' . g:cp.lavender
 
-execute 'hi GitText guifg=' . g:cp.black1 ' guibg=' . g:cp.lavender . ' gui=bold'
-execute 'hi GitSpace guifg=' . g:cp.lavender ' guibg=' . g:cp.black1
-execute 'hi GitSep guifg=' . g:cp.lavender ' guibg=' . g:cp.black3
-
-execute 'hi FileNameText guifg=' . g:cp.white ' guibg=' . g:cp.black3
-execute 'hi FileNameTextInactive guifg=' . g:cp.white ' guibg=' . g:cp.black1
-execute 'hi FileNameSpace guifg=' . g:cp.black3 ' guibg=' . g:cp.black3
-execute 'hi FileNameSep guifg=' . g:cp.black3 ' guibg=' . g:cp.black1
-
-execute 'hi FileTypeText guifg=' . g:cp.white ' guibg=' . g:cp.black3
-execute 'hi FileTypeSpace guifg=' . g:cp.black3 ' guibg=' . g:cp.black3
-execute 'hi FileTypeSep guifg=' . g:cp.black3 ' guibg=' . g:cp.black1
-
-execute 'hi ParentText guifg=' . g:cp.black1 ' guibg=' . g:cp.lavender
-execute 'hi ParentSpace guifg=' . g:cp.lavender ' guibg=' . g:cp.red
-execute 'hi ParentSep guifg=' . g:cp.lavender ' guibg=' . g:cp.black3
-
-execute 'hi LineText guifg=' . g:cp.black1 ' guibg=' . g:cp.rosewater . ' gui=bold'
-execute 'hi LineSpace guifg=' . g:cp.rosewater ' guibg=' . g:cp.rosewater
-execute 'hi LineSep guifg=' . g:cp.rosewater ' guibg=' . g:cp.lavender
+execute 'hi Base guifg=' . s:cp.black1 ' guibg=' . s:cp.black1
+execute 'hi ModeText guifg=' . s:cp.black1 ' guibg=' . s:cp.rosewater . ' gui=bold'
+execute 'hi GitText guifg=' . s:cp.black1 ' guibg=' . s:cp.lavender . ' gui=bold'
+execute 'hi FileNameText guifg=' . s:cp.white ' guibg=' . s:cp.black3
+execute 'hi FileNameTextInactive guifg=' . s:cp.white ' guibg=' . s:cp.black1
+execute 'hi FileTypeText guifg=' . s:cp.white ' guibg=' . s:cp.black3
+execute 'hi ParentText guifg=' . s:cp.black1 ' guibg=' . s:cp.lavender
+execute 'hi LineText guifg=' . s:cp.black1 ' guibg=' . s:cp.rosewater . ' gui=bold'
 
 
 function! ModeCurrent() abort
     let l:modecurrent = mode()
-    let l:modelist = get(g:currentmode, l:modecurrent, '')
+    let l:modelist = get(s:currentmode, l:modecurrent, '')
     let l:current_status_mode = l:modelist
     return l:current_status_mode
 endfunction
@@ -109,59 +85,52 @@ function! GitBranch()
   if exists('*fugitive#head()')
     return ' ' . fugitive#head()
   else
-    return ' ' . '[-] '
+    return ' ' . ' NONE'
   endif
 endfunction
 
 
 function! FileIcon() abort
-    return get(g:icons, &filetype, ' ')
+    return get(s:icons, &filetype, ' ')
 endfunction
 
 
 function! ActiveLine()
     let statusline = ''
-
-    let statusline .= '%#Base#'                                     " Background colour.
+    let statusline .= '%#Base#'                                   " Background colour.
 
     " Current Mode.
-    let statusline .= "%#ModeSpace#%{g:assets.bar}"                 " Spacer.
-    let statusline .= '%#ModeText#%{ModeCurrent()}'                 " Content.
-    let statusline .= "%#ModeSpace#%{g:assets.bar}"                 " Spacer.
-    let statusline .= '%#ModeSep#%{g:assets.slant_r2}'              " Right separation.
+    let statusline .= "%#ModeText#%{repeat('\ ', 3)}"             " Spacer.
+    let statusline .= '%#ModeText#%{ModeCurrent()}'               " Content.
+    let statusline .= "%#ModeText#%{repeat('\ ', 3)}"             " Spacer.
 
   " Current Git Branch.
-    let statusline .= "%#GitSpace#%{g:assets.bar}"                  " Spacer.
-    let statusline .= '%#GitText#%{GitBranch()}'                    " Content.
-    let statusline .= "%#GitSpace#%{g:assets.bar}"                  " Spacer.
-    let statusline .= '%#GitSep#%{g:assets.slant_r2}'               " Right separation.
+    let statusline .= "%#GitText#%{repeat('\ ', 3)}"              " Spacer.
+    let statusline .= "%#GitText#%{GitBranch()}"                  " Content.
+    let statusline .= "%#GitText#%{repeat('\ ', 3)}"              " Spacer.
 
     " Filename.
-    let statusline .= "%#FileNameSpace#%{g:assets.bar}"             " Spacer.
-    let statusline .= '%#FileNameText#%t'                           " Content.
-    let statusline .= "%#FileNameSpace#%{g:assets.bar}"             " Spacer.
-    let statusline .= '%#FileNameText#%{&modified?"[+] ":""}'       " Content.
-    let statusline .= '%#FileNameSep#%{g:assets.slant_r2}'          " Right separation.
+    let statusline .= "%#FileNameText#%{repeat('\ ', 3)}"         " Spacer.
+    let statusline .= "%#FileNameText#%t"                         " Content.
+    let statusline .= "%#FileNameText#%{repeat('\ ', 1)}"         " Spacer.
+    let statusline .= '%#FileNameText#%{&modified?"[+]":""}'      " Content.
 
     let statusline .= '%='
 
     " Filetype and File Icon.
-    let statusline .= '%#FileTypeSep#%{g:assets.slant_l}'           " Left separation.
-    let statusline .= "%#FileTypeSpace#%{g:assets.bar}"             " Spacer.
-    let statusline .= "%#FileTypeText#%{FileIcon()}%{&filetype}"    " Content.
-    let statusline .= "%#FileTypeSpace#%{g:assets.bar}"             " Spacer.
+    let statusline .= "%#FileTypeText#%{repeat('\ ', 3)}"         " Spacer.
+    let statusline .= "%#FileTypeText#%{FileIcon()}%{&filetype}"  " Content.
+    let statusline .= "%#FileTypeText#%{repeat('\ ', 3)}"         " Spacer.
 
     " Parent Folder.
-    let statusline .= '%#ParentSep#%{g:assets.slant_l}'             " Left separation.
-    let statusline .= "%#ParentSpace#%{g:assets.bar}"               " Spacer.
-    let statusline .= "%#ParentText# %{expand('%:p:h:t')}"         " Content.
-    let statusline .= "%#ParentSpace#%{g:assets.bar}"               " Spacer.
+    let statusline .= "%#ParentText#%{repeat('\ ', 3)}"           " Spacer.
+    let statusline .= "%#ParentText# %{expand('%:p:h:t')}"       " Content.
+    let statusline .= "%#ParentText#%{repeat('\ ', 3)}"           " Spacer.
 
     " Line and Column Number.
-    let statusline .= '%#LineSep#%{g:assets.slant_l}'               " Left separation
-    let statusline .= "%#LineSpace#%{g:assets.bar}"                 " Spacer.
-    let statusline .= "%#LineText#%l:%c"                            " Content
-    let statusline .= "%#LineSpace#%{g:assets.bar}"                 " Spacer.
+    let statusline .= "%#LineText#%{repeat('\ ', 3)}"             " Spacer.
+    let statusline .= "%#LineText#%l:%c"                          " Content
+    let statusline .= "%#LineText#%{repeat('\ ', 2)}"             " Spacer.
 
     return statusline
 endfunction
