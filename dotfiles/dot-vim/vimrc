@@ -17,8 +17,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-fugitive'
@@ -31,8 +29,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-
-Plug 'hrsh7th/vim-vsnip'
 
 if has("nvim")
   Plug 'joechrisellis/nvim-vim-termbinds'
@@ -49,10 +45,9 @@ if has("nvim")
 
   " nvim-cmp:
   Plug 'hrsh7th/nvim-cmp'
-  Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/cmp-nvim-lsp'
 
-  " Colorschemes
+  " Colorscheme:
   Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 endif
 
