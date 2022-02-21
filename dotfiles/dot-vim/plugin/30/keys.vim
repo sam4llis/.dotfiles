@@ -47,6 +47,8 @@ if has("nvim")
     " nnoremap <silent> <M-t> :call ToggleFloatingTerminal()<CR>
     nnoremap <silent> <C-\><C-t> :call ToggleFloatingTerminal()<CR>
     tnoremap <silent> <C-\><C-t> <C-\><C-n><C-W>:call ToggleFloatingTerminal()<CR>
+    tnoremap <silent> <C-z> <C-\><C-n>:lua require('terminal').toggle()<CR>
+    nnoremap <silent> <C-z> :lua require('terminal').toggle()<CR>
 
 endif
 
