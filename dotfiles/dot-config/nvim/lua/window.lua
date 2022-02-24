@@ -1,3 +1,14 @@
+window = {
+  buf = nil,
+  win = nil,
+  pid = nil,
+  defs = {
+    winblend = 15,
+    percentage = 0.8,
+  },
+}
+
+
 local function get_defaults(opts, defs)
   if opts == nil then
     opts = {}
@@ -16,7 +27,7 @@ end
 
 
 window.get_opts = function (opts)
-  opts = get_defaults(opts, window.defs)
+  local opts = get_defaults(opts, window.defs)
 
   local width = math.floor(vim.o.columns * opts.percentage)
   local height = math.floor(vim.o.lines * opts.percentage)
@@ -45,17 +56,6 @@ window.get_opts = function (opts)
 
   return opts
 end
-
-
-local window = {
-  buf = nil,
-  win = nil,
-  pid = nil,
-  defs = {
-    winblend = 15,
-    percentage = 0.9,
-  },
-}
 
 
 window.open = function ()

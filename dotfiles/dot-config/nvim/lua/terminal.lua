@@ -9,13 +9,14 @@ if not vim.fn.has("nvim-0.5.0") then
 end
 
 local window = require('window')
--- window.open()
 
-local terminal = {
-  buf = nil,
-  win = nil,
-  pid = nil,
-}
+-- local terminal = {
+--   buf = nil,
+--   win = nil,
+--   pid = nil,
+-- }
+
+local terminal = {}
 
 terminal.open = function (cmd)
   local buf = window.open()
@@ -29,7 +30,6 @@ terminal.open = function (cmd)
     vim.cmd('startinsert')
   end
 
-  -- NOTE: check autocmd! or autocmd.
   vim.cmd("autocmd! TermClose * lua require('terminal').exit()")
 
   window.buf = buf
