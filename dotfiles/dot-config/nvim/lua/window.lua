@@ -1,32 +1,33 @@
-local window = {
-  buf = nil,
-  win = nil,
-  pid = nil,
-}
-
-window.open = function ()
-  local buf = nil
-
-  if window.buf and vim.api.nvim_buf_is_loaded(window.buf) then
-    buf = window.buf
-  else
-    buf = vim.api.nvim_create_buf(false, true)
+local function get_defaults(opts, defs)
+  if opts == nil then
+    opts = {}
   end
 
-  -- NOTE: look at lsp for better config here.
-  local width = math.floor(vim.o.columns * 0.50)
-  local height = math.floor(vim.o.lines * 0.50)
-  local row = math.floor(1)
-  local col = math.floor((vim.o.columns - width) -4)
-  -- local width = math.floor(vim.o.columns * 0.8)
-  -- local height = math.floor(vim.o.lines * 0.8)
-  -- local row = math.floor(((vim.o.lines - height) / 2) - 1)
-  -- local col = math.floor((vim.o.columns - width) / 2)
+  opts = vim.deepcopy(opts)
+
+  for k, v in pairs(defs) do
+    if opts[k] == nil then
+      opts[k] = v
+    end
+  end
+
+  return opts
+end
+
+
+window.get_opts = function (opts)
+  opts = get_defaults(opts, window.defs)
+
+  local width = math.floor(vim.o.columns * opts.percentage)
+  local height = math.floor(vim.o.lines * opts.percentage)
+
+  local top = math.floor(((vim.o.lines - height) / 2) - 1)
+  local left = math.floor((vim.o.columns - width) / 2)
 
   local opts = {
     relative = 'editor',
-    row = row,
-    col = col,
+    row = top,
+    col = left,
     width = width,
     height = height,
     style = 'minimal',
@@ -42,10 +43,36 @@ window.open = function ()
     },
   }
 
+  return opts
+end
+
+
+local window = {
+  buf = nil,
+  win = nil,
+  pid = nil,
+  defs = {
+    winblend = 15,
+    percentage = 0.9,
+  },
+}
+
+
+window.open = function ()
+  local buf = nil
+
+  if window.buf and vim.api.nvim_buf_is_loaded(window.buf) then
+    buf = window.buf
+  else
+    buf = vim.api.nvim_create_buf(false, true)
+  end
+
+  local opts = window.get_opts()
+
   window.win = vim.api.nvim_open_win(buf, true, opts)
-  vim.opt.winblend = 0
   return buf
 end
+
 
 window.close = function(force)
   if not window.win then
@@ -68,5 +95,6 @@ window.close = function(force)
     window.pid = nil
   end
 end
+
 
 return window
