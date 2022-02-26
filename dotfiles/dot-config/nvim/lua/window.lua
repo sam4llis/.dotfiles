@@ -28,10 +28,9 @@ function Window:open()
     buf = vim.api.nvim_create_buf(false, true)
   end
 
-  local opts = get_opts()
+  local opts = get_opts(self.opts)
   self.win = vim.api.nvim_open_win(buf, true, opts)
   self.buf = buf
-
 end
 
 
