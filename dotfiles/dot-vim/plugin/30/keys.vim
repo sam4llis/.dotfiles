@@ -8,6 +8,10 @@ nnoremap Q <nop>
 " Normalise search direction behaviour.
 nnoremap <expr> n (v:searchforward ? 'n' : 'N')
 nnoremap <expr> N (v:searchforward ? 'N' : 'n')
+onoremap <expr> n (v:searchforward ? 'n' : 'N')
+onoremap <expr> N (v:searchforward ? 'N' : 'n')
+xnoremap <expr> n (v:searchforward ? 'n' : 'N')
+xnoremap <expr> N (v:searchforward ? 'N' : 'n')
 
 cabbr <expr> %%  getcmdtype() == ':' ? fnameescape(expand('%:h')) : '%%'
 " ;t can be used to easily write TODO comments.
