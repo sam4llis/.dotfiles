@@ -8,12 +8,8 @@ augroup python_marks
   autocmd BufEnter *.py silent! call SetupMarks()
 augroup END
 
-" Floating REPL.
-nnoremap <buffer> <silent> <C-\><C-r> :call ToggleFloatingTerminal('"python3"')<CR>
-tnoremap <silent> <C-\><C-r> <C-\><C-n><C-W>:call ToggleFloatingTerminal()<CR>
-
-" Floating script.
-nnoremap <buffer> <silent> <localleader>r :w <bar> :call AddTerminal('"python3" "<C-r>%"')<CR>
+" Run active buffer.
+nnoremap <leader>r :lua require('terminal').run_active_buffer('python3', true)<CR>
 
 " Autocomplete Character Mappings:
 inoremap <buffer> __ ____<esc>hi

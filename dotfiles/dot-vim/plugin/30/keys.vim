@@ -46,7 +46,6 @@ if has("nvim")
     " Floating terminal mappings.
     tnoremap <silent> <C-z> <C-\><C-n>:lua require('terminal'):toggle()<CR>
     nnoremap <silent> <C-z> :lua require('terminal'):toggle()<CR>
-    nnoremap <silent> <leader>r :lua require('terminal'):run_active_buffer(true)<CR>
 
 endif
 
