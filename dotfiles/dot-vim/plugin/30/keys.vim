@@ -44,11 +44,9 @@ if has("nvim")
     nnoremap <silent> <leader>fb <cmd>Telescope buffers<CR>
 
     " Floating terminal mapping.
-    " nnoremap <silent> <M-t> :call ToggleFloatingTerminal()<CR>
-    nnoremap <silent> <C-\><C-t> :call ToggleFloatingTerminal()<CR>
-    tnoremap <silent> <C-\><C-t> <C-\><C-n><C-W>:call ToggleFloatingTerminal()<CR>
-    tnoremap <silent> <C-z> <C-\><C-n>:lua require('terminal').toggle()<CR>
-    nnoremap <silent> <C-z> :lua require('terminal').toggle()<CR>
+    tnoremap <silent> <C-z> <C-\><C-n>:lua require('terminal'):toggle()<CR>
+    nnoremap <silent> <C-z> :lua require('terminal'):toggle()<CR>
+    nnoremap <silent> <leader>r :w<CR> <bar> :lua require('terminal'):run_active_buffer()<CR>
 
 endif
 
