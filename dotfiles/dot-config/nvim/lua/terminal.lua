@@ -40,18 +40,17 @@ function Terminal:open(cmd)
 end
 
 
-function Terminal.run_active_buffer(save)
+function Terminal.run_active_buffer(cmd, save)
   local filename = vim.fn.expand('%')
-  local filetype = vim.bo.filetype
+  -- local filetype = vim.bo.filetype
 
   if save then
     vim.cmd('w')
   end
 
   Window.new():open()
-  vim.fn.termopen('python3' .. ' ' .. filename)
+  vim.fn.termopen(cmd .. ' ' .. filename)
 end
-
 
 function Terminal.run_repl()
 end

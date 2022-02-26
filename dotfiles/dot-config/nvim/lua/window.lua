@@ -68,84 +68,8 @@ function Window:toggle(cmd)
 end
 
 
--- -- Create a new window instance.
--- function Window:new (defs)
---   local o = {
---     buf = nil,
---     win = nil,
---     pid = nil,
---     defs = defs,
---   }
-
---   return setmetatable(o, { __index = self })
--- end
-
-
--- function Window:open ()
---   local buf = nil
-
---   print('foo')
---   print(w.defs)
-
---   if self.buf and vim.api.nvim_buf_is_loaded(self.buf) then
---     buf = self.buf
---   else
---     buf = vim.api.nvim_create_buf(false, true)
---   end
-
---   local opts = self.get_opts()
-
---   self.win = vim.api.nvim_open_win(buf, true, opts)
---   return buf
--- end
-
-
--- function Window:close (force)
---   if not self.win then
---     return
---   end
-
---   if vim.api.nvim_win_is_valid(self.win) then
---     vim.api.nvim_win_close(self.win, false)
---     self.win = nil
---   end
-
---   if force then
---     if vim.api.nvim_buf_is_loaded(self.buf) then
---       vim.api.nvim_buf_delete(self.buf, { force = true })
---     end
-
---     vim.fn.jobstop(self.pid)
-
---     self.buf = nil
---     self.pid = nil
---   end
--- end
-
--- w = Window:new ({winblend=15, percentage=0.8})
--- w:open()
-
-
-
-
-
-
--- window = {
---   buf = nil,
---   win = nil,
---   pid = nil,
---   defs = {
---     winblend = 15,
---     percentage = 0.8,
---   },
--- }
-
-
 local function get_defaults(opts, defs)
-  if opts == nil then
-    opts = {}
-  end
-
+  opts = opts or {}
   opts = vim.deepcopy(opts)
 
   for k, v in pairs(defs) do
@@ -158,9 +82,7 @@ local function get_defaults(opts, defs)
 end
 
 
--- window.get_opts = function (opts)
 function get_opts(opts)
-  -- local opts = get_defaults(opts, defs)
   local opts = get_defaults(opts, {percentage=0.8, winblend=15})
 
   local width = math.floor(vim.o.columns * opts.percentage)
