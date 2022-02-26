@@ -42,7 +42,7 @@ function Terminal.run_active_buffer(cmd, save)
   local filename = vim.fn.expand('%')
 
   if save then
-    vim.cmd('w')
+    vim.cmd('write')
   end
 
   Window.new():open()
