@@ -48,7 +48,7 @@ function Terminal.run_active_buffer(save)
     vim.cmd('w')
   end
 
-  t = Window.new():open()
+  Window.new():open()
   vim.fn.termopen('python3' .. ' ' .. filename)
 end
 
