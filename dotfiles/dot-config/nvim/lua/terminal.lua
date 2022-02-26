@@ -36,7 +36,7 @@ function Terminal:open(cmd)
     vim.cmd('startinsert')
   end
 
-  vim.cmd("autocmd TermClose <buffer> lua require('terminal'):close()")
+  vim.cmd("autocmd TermClose <buffer> lua require('terminal'):close(true)")
 end
 
 
