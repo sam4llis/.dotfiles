@@ -12,8 +12,12 @@
 -- on the RHS of the editor approx (90 characters) across.
 --
 -- Add vim-slime jobid set automatically to self.pid for REPL windows.
+--
+-- Fix force closing a REPL window - can't open another REPL in same folder after it has been closed!
+--
+-- Move QuickNote() into Lua, and make it use the require('window') Window API.
 
-if not vim.fn.has("nvim-0.5.0") then
+if vim.fn.has('nvim') == 0 then
   return
 end
 

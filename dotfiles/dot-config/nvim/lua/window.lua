@@ -1,4 +1,4 @@
-if not vim.fn.has("nvim-0.5.0") then
+if not vim.fn.has('nvim') then
     return
 end
 
