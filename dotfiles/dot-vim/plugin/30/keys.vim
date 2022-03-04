@@ -56,9 +56,6 @@ if has("nvim")
 
 endif
 
-" Open the active file as a finder window.
-command! Finder silent exe '!open ' . expand("%:p:h")
-
 " Ragtag mappings.
 inoremap <M-o>       <Esc>o
 inoremap <C-j>       <Down>
