@@ -43,9 +43,13 @@ vnoremap <leader>o "+y
 
 if has("nvim")
     " Telescope mappings.
-    nnoremap <silent> <leader>ff <cmd>Telescope find_files<CR>
-    nnoremap <silent> <leader>fg <cmd>Telescope live_grep<CR>
-    nnoremap <silent> <leader>fb <cmd>Telescope buffers<CR>
+    " nnoremap <silent> <leader>ff <cmd>Telescope find_files<CR>
+    " nnoremap <silent> <leader>fg <cmd>Telescope live_grep<CR>
+    " nnoremap <silent> <leader>fb <cmd>Telescope buffers<CR>
+    nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<CR>
+    nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<CR>
+    nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<CR>
+    nnoremap <leader>fn <cmd>lua require('telescope.builtin').find_files({prompt_title='Find Notes', cwd='~/notes/'})<CR>
 
     " Floating terminal mappings.
     tnoremap <silent> <C-z> <C-\><C-n>:lua require('terminal'):toggle()<CR>

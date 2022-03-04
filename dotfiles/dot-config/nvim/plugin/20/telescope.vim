@@ -18,10 +18,10 @@ lua <<EOF
     pickers = {},
     extensions = {
       fzf = {
-        fuzzy = true,                    -- false will only do exact matching
+        fuzzy = true,
         override_generic_sorter = true,
         override_file_sorter = true,
-        case_mode = "smart_case",        -- smart_case | ignore_case | respect_case
+        case_mode = "smart_case",
       },
     },
   }

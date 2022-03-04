@@ -1,4 +1,5 @@
 -- TODO: add checkbox functionality in the window.
+-- TODO: if notes directory doesnt exist, create it!
 if not vim.fn.has("nvim") then
   return
 end
@@ -9,7 +10,7 @@ setmetatable(Note, require('window'))
 
 
 function Note:open()
-  local fdir  = '~/notes/' -- todo: if not exist, create this!
+  local fdir  = '~/notes/'
   local fdate = vim.fn.strftime('%d-%m-%y')
   local fname = fdir .. 'note-' .. fdate .. '.md'
 
