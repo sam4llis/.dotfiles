@@ -1,4 +1,4 @@
-if not vim.fn.has('nvim') then
+if vim.fn.has('nvim') == 0 then
     return
 end
 
