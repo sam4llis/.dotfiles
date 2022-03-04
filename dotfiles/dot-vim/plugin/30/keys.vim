@@ -51,6 +51,9 @@ if has("nvim")
     tnoremap <silent> <C-z> <C-\><C-n>:lua require('terminal'):toggle()<CR>
     nnoremap <silent> <C-z> :lua require('terminal'):toggle()<CR>
 
+    " Floating note mappings.
+    nnoremap <silent> <leader>n :lua require('note'):toggle(true)<CR>
+
 endif
 
 " Open the active file as a finder window.
@@ -60,5 +63,3 @@ command! Finder silent exe '!open ' . expand("%:p:h")
 inoremap <M-o>       <Esc>o
 inoremap <C-j>       <Down>
 let g:ragtag_global_maps = 1
-
-nmap <silent> <leader>n :call QuickNote() <CR>
