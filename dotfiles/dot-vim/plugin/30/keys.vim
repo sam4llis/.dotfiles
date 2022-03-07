@@ -35,9 +35,6 @@ nnoremap <expr> <leader>S ReverseSortOp()
 
 vnoremap <leader>q :norm! @q<CR>
 
-tnoremap <expr> ;# expand("#")
-tnoremap <expr> ;## expand("##")
-
 nmap <leader>o "+y
 vnoremap <leader>o "+y
 
