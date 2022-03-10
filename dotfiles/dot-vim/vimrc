@@ -51,6 +51,11 @@ if has("nvim")
 
   " Colorscheme:
   Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+
+  " My plugins:
+  " Plug 'sam4llis/nvim-buoy'
+  " Plug 'sam4llis/nvim-buoy-terminal'
+  Plug '~/Documents/nvim-plugins/nvim-buoy'
 endif
 
 packadd! matchit
