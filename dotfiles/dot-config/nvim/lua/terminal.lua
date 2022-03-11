@@ -34,9 +34,7 @@ function Terminal:open(cmd)
     self.pid = vim.fn.termopen(cmd)
   end
 
-  if not vim.fn.has_key(vim.g.plugs, 'nvim-vim-termbinds') then
-    vim.cmd('startinsert')
-  end
+  vim.cmd('startinsert')
 
   vim.cmd("autocmd TermClose <buffer> lua require('terminal'):close(true)")
 end
