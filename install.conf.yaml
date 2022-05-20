@@ -5,7 +5,6 @@
 - clean: ['~']
 
 - link:
-    ~/.config/kitty: dotfiles/dot-config/kitty
     ~/.config/nvim: dotfiles/dot-config/nvim
     ~/.zshrc: dotfiles/dot-zshrc
     ~/.vim: dotfiles/dot-vim
