@@ -1,7 +1,7 @@
 [submodule "dotbot"]
-	path = dotbot
-	url = https://github.com/anishathalye/dotbot
+    path = dotbot
+    url = https://github.com/anishathalye/dotbot
 
 [submodule "dotfiles/dot-vim/pack/tpope/start/dadbod"]
-	path = dotfiles/dot-vim/pack/tpope/start/dadbod
-	url = https://github.com/tpope/vim-dadbod
+    path = dotfiles/dot-vim/pack/tpope/start/dadbod
+    url = https://github.com/tpope/vim-dadbod
