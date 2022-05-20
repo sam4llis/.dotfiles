@@ -7,5 +7,5 @@ My dotfiles for Kitty, Vim, Neovim, and Zsh.
 To deploy the dotfiles run:
 
 ```
-git clone https://github.com/sam4llis/.dotfiles && cd .dotfiles && ./install
+git clone https://github.com/sam4llis/.dotfiles && cd ~/.dotfiles && ./install
 ```
