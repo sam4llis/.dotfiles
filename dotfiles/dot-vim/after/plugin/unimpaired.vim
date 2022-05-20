@@ -4,24 +4,24 @@ endif
 let g:loaded_unimpaired_conf = 1
 
 function! CustomUnimpairedMoveUp(count)
-  silent! exe "norm" . a:count . "\<Plug>unimpairedMoveUp=="
+  silent! execute "norm" . a:count . "\<Plug>unimpairedMoveUp=="
   silent! call repeat#set("\<Plug>CustomUnimpairedMoveUp", a:count)
 endfunction
 
 function! CustomUnimpairedMoveDown(count)
-  silent! exe "norm" . a:count . "\<Plug>unimpairedMoveDown=="
+  silent! execute "norm" . a:count . "\<Plug>unimpairedMoveDown=="
   silent! call repeat#set("\<Plug>CustomUnimpairedMoveDown", a:count)
 endfunction
 
 function! CustomUnimpairedMoveSelectionUp(count)
-  silent! exe "norm" . a:count . "\<Plug>unimpairedMoveSelectionUp"
-  silent! exe "norm gv="
+  silent! execute "norm" . a:count . "\<Plug>unimpairedMoveSelectionUp"
+  silent! execute "norm gv="
   silent! call repeat#set("\<Plug>CustomUnimpairedMoveSelectionUp", a:count)
 endfunction
 
-function! CustomUnimpairedMoveSelectinDown(count)
-  silent! exe "norm" . a:count . "\<Plug>unimpairedMoveSelectionDown"
-  silent! exe "norm gv="
+function! CustomUnimpairedMoveSelectionDown(count)
+  silent! execute "norm" . a:count . "\<Plug>unimpairedMoveSelectionDown"
+  silent! execute "norm gv="
   silent! call repeat#set("\<Plug>CustomUnimpairedMoveSelectionDown", a:count)
 endfunction
 

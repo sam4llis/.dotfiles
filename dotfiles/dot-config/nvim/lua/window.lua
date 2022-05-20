@@ -9,7 +9,6 @@ Window.__index = Window
 function Window.new(opts)
   local instance = setmetatable({}, Window)
 
-  -- Initialise variables.
   instance.buf  = -1
   instance.win  = nil
   instance.pid  = nil

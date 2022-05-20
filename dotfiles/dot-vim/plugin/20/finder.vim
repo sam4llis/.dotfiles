@@ -1,2 +1,2 @@
-" Open the active file as a finder window.
+" Open the active file in a Finder window.
 command! Finder silent exe '!open ' . expand("%:p:h")

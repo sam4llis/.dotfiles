@@ -1,5 +1,5 @@
-" clang-format:
-nnoremap <localleader>f :ClangFormat<cr>
-vnoremap <localleader>f :ClangFormat<cr>
+" " clang-format:
+" nnoremap <localleader>f :ClangFormat<cr>
+" vnoremap <localleader>f :ClangFormat<cr>
 
-setlocal commentstring=//\ %s
+" setlocal commentstring=//\ %s

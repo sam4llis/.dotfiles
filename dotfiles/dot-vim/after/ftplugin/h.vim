@@ -1,2 +1,2 @@
-" clang-format:
-vnoremap <localleader>f :ClangFormat<cr>
+" " clang-format:
+" vnoremap <localleader>f :ClangFormat<cr>

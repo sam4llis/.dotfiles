@@ -1,1 +1,1 @@
-command! Vimrc :e $MYVIMRC
+" command! Vimrc :e $MYVIMRC
