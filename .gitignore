@@ -7,7 +7,7 @@ dotfiles/dot-vim/.netrwhist
 
 # Ignore vim-plug stuff.
 dotfiles/dot-vim/plugged
-# dotfiles/dot-config/nvim/plugged
+dotfiles/dot-config/nvim/plugged
 
 # Ignore swapfiles.
 dotfiles/dot-vim/.*.swp
