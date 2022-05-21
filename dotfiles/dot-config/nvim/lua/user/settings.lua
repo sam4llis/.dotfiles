@@ -10,6 +10,7 @@ local settings = {
   cursorline = true,                         -- Highlight the active cursor line.
   completeopt = 'menuone,noinsert,noselect', -- Saner completion experience.
   foldcolumn = 'auto',                       -- Resize to the minimum amount of folds to display.
+  history = 5000,                            -- Remember more command-line history.
   ignorecase = true,                         -- Case-insensitive search.
   lazyredraw = true,                         -- Do not redraw screen while executing macros, etc.
   list = true,                               -- Enable list mode.
