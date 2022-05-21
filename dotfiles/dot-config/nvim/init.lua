@@ -27,5 +27,4 @@ require('user.setup.projectionist')
 require('user.ui.colorscheme')
 require('user.ui.statusline')
 
--- TODO: Add `if` statements in lsp.lua.
 -- TODO: Sort out ftplugin/lua

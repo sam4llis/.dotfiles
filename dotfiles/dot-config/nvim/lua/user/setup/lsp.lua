@@ -4,7 +4,7 @@ if vim.fn.has('nvim-0.6.1') ~= 1 then
   return
 end
 
-local custom_lsp_attach = function(client, bufnr)
+local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   normal_completion_prefix = 'yc'
   visual_completion_prefix = '<leader>y'
@@ -24,21 +24,26 @@ local custom_lsp_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(0, 'n', normal_completion_prefix .. 't', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
-  if client.resolved_capabilities.document_formatting then
-      vim.api.nvim_buf_set_keymap(0, 'n', normal_completion_prefix .. 'f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  elseif client.resolved_capabilities.document_range_formatting then
-      vim.api.nvim_buf_set_keymap(0, 'v', visual_completion_prefix .. 'f', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+  if client.server_capabilities.document_formatting then
+    vim.api.nvim_buf_set_keymap(0, 'n', normal_completion_prefix .. 'f', '<cmd>lua vim.lsp.buf.format { async = true }<CR>', {noremap = true})
+  elseif client.server_capabilities.document_range_formatting then
+    vim.api.nvim_buf_set_keymap(0, 'v', visual_completion_prefix .. 'f', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', {noremap = true})
   end
 end
 
-local nvim_lsp = require('lspconfig')
-local servers = { 'pylsp', 'rust_analyzer', 'tsserver', 'vimls'}
-
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-  on_attach = custom_lsp_attach,
-  flags = {
-      debounce_text_changes = 150,
-  }
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+vim.lsp.diagnostic.on_publish_diagnostics, {
+  -- delay update diagnostics.
+  update_in_insert = false,
 }
+)
+
+local servers = { 'pyright', 'tsserver', 'vimls'}
+for _, lsp in ipairs(servers) do
+  require('lspconfig')[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
 end
