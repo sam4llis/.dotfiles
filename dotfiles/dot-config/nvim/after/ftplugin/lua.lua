@@ -1,80 +1,142 @@
-vim.opt_local.suffixesadd:prepend('.lua')
-vim.opt_local.suffixesadd:prepend('init.lua')
-vim.opt_local.path:prepend(','..vim.fn.stdpath('config')..'/lua')
-
--- Iterator that splits a string o a given delimiter FIXME
-local function split(str, delim)
-  delim = delim or "%s"
-  return string.gmatch(str, string.format('[^%s]+', delim))
+-- @desc
+--   Helper function to `pretty print` tables in Lua for debugging.
+-- @param t: table
+--   The table to be inspected.
+-- @return: table
+--   The input table.
+pprint = function(t)
+  print(vim.inspect(t))
+  return t
 end
 
--- Find the proper directory separator depending
--- on lua installation or OS.
-local function dir_separator()
-  -- Look at package.config for directory separator string (it's the first line)
-  -- if package.config then
-  --   return string.match(package.config, '^[^\n]')
-  -- elseif vim.fn.has('win32') == 1 then
-  --   return '\\'
-  -- else
-    return '/'
-  -- end
+
+--
+-- Open Lua files via `gf` command.
+--
+
+--
+-- @desc
+--   Function that returns the correct directory separator character dependent
+--   on a user's operating system.
+-- @return: string
+--   The directory separator character. This is usually `/` on Unix-like systems
+--   and `\` on a Windows system.
+--
+local get_separator = function ()
+  return string.match(package.config, '^[^\n]')
 end
 
--- Search for lua traditional include paths.
--- This mimics how require internally works.
-local function include_paths(fname, ext)
-  ext = ext or "lua"
-  local paths = string.gsub(package.path, '%?', fname)
-  for path in split(paths, "%;") do
+
+--
+-- @desc:
+--   Function that splits an input string into an iterable object. A delimiter
+--   can be specified to split the string at this specified character.
+-- @param s: string
+--   The input string to be split.
+-- @param delimiter: string
+--   The character(s) at which to split the `s` variable. Defaults to a space
+--   character.
+-- @return: string[]
+--   Returns an iterable object of strings after breaking `s` by the specified
+--   delimiter.
+--
+local split = function (s, delimiter)
+  local delimiter = delimiter or ' '
+  return string.gmatch(s, string.format('[^%s]+', delimiter))
+end
+
+
+--
+-- @desc
+--   A utility function to concatenate a relative file path, filename, and file
+--   type into the desired target path.
+-- @param fpath: string
+--   A filepath (excluding the file name).
+-- @param fname: string
+--   A target filename (excluding an extension).
+-- @param ftype: string
+--   The file type of the target file. Defaults to `.lua` files.
+-- @return: string
+--   A target filepath, with the correct directory separator character.
+local get_fpath = function (fpath, fname, ftype)
+  local ftype = ftype or 'lua'
+  local path = table.concat({fpath, ftype, fname}, get_separator())
+  return path
+end
+
+
+--
+-- @desc:
+--   Function that searches for a target filename inside Lua paths and Neovim
+--   runtime paths. A target filepath is returned if it can be found inside
+--   these paths.
+-- @param fpath: string
+--   The relative filepath to be found inside the Lua and Neovim paths,
+--   e.g., `/user/setup/diagnostics`.
+-- @param ftype: string
+--   The file type of the target file. Defaults to `.lua` files.
+-- @return: string | nil
+--   The target file path if it can be found inside the Lua or Neovim (runtime)
+--   paths. Otherwise, `nil` is returned.
+--
+local search_paths_for_file = function (fpath, ftype)
+  ftype = ftype or 'lua'
+
+  local paths
+
+  -- First, search for the filepath in Lua modules.
+  paths = string.gsub(package.path, '%?', fpath)
+  for path in split(paths, ';') do
     if vim.fn.filereadable(path) == 1 then
       return path
     end
   end
-end
 
--- Search for nvim lua include paths
-local function include_rtpaths(fname, ext)
-  ext = ext or "lua"
-  local sep = dir_separator()
-  local rtpaths = vim.api.nvim_list_runtime_paths()
-  local modfile, initfile = string.format('%s.%s', fname, ext), string.format('init.%s', ext)
-  for _, path in ipairs(rtpaths) do
-    -- Look on runtime path for 'lua/*.lua' files
-    local path1 = table.concat({path, ext, modfile}, sep)
-    if     vim.fn.filereadable(path1) == 1 then
-      return path1
+  -- If a Lua module can't be found, search for the filepath in Neovim modules.
+  paths = vim.api.nvim_list_runtime_paths()
+  local module_fname = fpath .. '.' .. ftype
+  local init_fname = fpath .. get_separator() .. 'init.' .. ftype
+  local target_fpath
+
+  for _, path in pairs(paths) do
+    -- Look for a direct module name from the `fname` input.
+    target_fpath = get_fpath(path, module_fname, ftype)
+    if vim.fn.filereadable(target_fpath) == 1 then
+      return target_fpath
     end
-    -- Look on runtime path for 'lua/*/init.lua' files
-    local path2 = table.concat({path, ext, fname, initfile}, sep)
-    if vim.fn.filereadable(path2) == 1 then
-      return path2
+
+    -- If a file related to `fname` does not exist, try to find an `init.lua`
+    -- file inside the `path/fname/` directory if it exists.
+    target_fpath = get_fpath(path, init_fname, ftype)
+    if vim.fn.filereadable(target_fpath) == 1 then
+      return target_fpath
     end
   end
 end
 
--- Global function that searches the path for the required file
-function Find_required_path(module)
-  -- Look at package.config for directory separator string (it's the first line)
-  local sep = string.match(package.config, '^[^\n]')
-  -- Properly change '.' to separator (probably '/' on *nix and '\' on Windows)
-  local fname = vim.fn.substitute(module, "\\.", sep, "g")
-  local f
-  ---- First search for lua modules
-  f = include_paths(fname, 'lua')
-  if f then return f end
-  -- This part is just for nvim modules
-  f = include_rtpaths(fname, 'lua')
-  if f then return f end
-  ---- Now search for Fennel modules
-  f = include_paths(fname, 'fnl')
-  if f then return f end
-  -- This part is just for nvim modules
-  f = include_rtpaths(fname, 'fnl')
-  if f then return f end
+
+--
+-- @desc
+--   Function (global) that searches for the virtual filepath `v_fpath` inside
+--   Lua and Neovim modules.
+-- @param v_fpath: string
+--   The virtual filepath to be searched for. This is the argument found inside
+--   `dofile() | loadfile() | require()` statements.
+-- @return: string | nil
+--   A real filepath as a string if `v_fpath` can be found as a Lua or Neovim
+--   module. Otherwise, `nil` is returned.
+--
+function _G.search_for_path(v_fpath)
+  -- Substitute all `.` characters in v_fpath to create a real filename path.
+  local fpath = string.gsub(v_fpath, '[.]', get_separator())
+
+  -- Search for the required module, and return it if found.
+  local target = search_paths_for_file(fpath)
+  if target then return target end
 end
 
 
--- Set options to open require with gf
+-- Create parameters to open `require` statements using `gf`.
+vim.opt_local.path:prepend(',' .. vim.fn.stdpath('config') .. '/lua')
 vim.opt_local.include = [=[\v<((do|load)file|require)\s*\(?['"]\zs[^'"]+\ze['"]]=]
-vim.opt_local.includeexpr = "v:lua.Find_required_path(v:fname)"
+vim.opt_local.includeexpr = 'v:lua.search_for_path(v:fname)'

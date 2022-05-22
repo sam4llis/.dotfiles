@@ -27,4 +27,3 @@ require('user.setup.projectionist')
 require('user.ui.colorscheme')
 require('user.ui.statusline')
 
--- TODO: Sort out ftplugin/lua
