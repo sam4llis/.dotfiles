@@ -14,6 +14,11 @@ require('telescope').setup{
         ["<esc>"] = actions.close,
       },
     },
+    layout_strategy = "vertical",
+    sorting_strategy = "ascending",
+    layout_config = {
+      prompt_position = 'top',
+    },
   },
   pickers = {},
   extensions = {

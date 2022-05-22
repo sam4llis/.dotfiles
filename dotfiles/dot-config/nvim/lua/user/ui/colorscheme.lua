@@ -6,7 +6,14 @@
 
 if vim.fn.empty('~/.config/nvim/plugged/catppuccin') ~= 1 then
   vim.cmd('colorscheme catppuccin')
+  local cp = require('catppuccin.core.color_palette')
 
   -- Increase border visibility.
-  vim.cmd('highlight VertSplit guifg=' .. require('catppuccin.core.color_palette').black4)
+  vim.cmd('highlight VertSplit guifg=' .. cp.black4)
+
+  -- Change default colour for floating window and nvim-telescope borders.
+  local border_colour = cp.gray1
+  vim.cmd('highlight FloatBorder guifg=' .. border_colour)
+  vim.cmd('highlight TelescopeBorder guifg=' .. border_colour)
+
 end
