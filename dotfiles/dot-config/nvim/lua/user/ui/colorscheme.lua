@@ -16,4 +16,7 @@ if vim.fn.empty('~/.config/nvim/plugged/catppuccin') ~= 1 then
   vim.cmd('highlight FloatBorder guifg=' .. border_colour)
   vim.cmd('highlight TelescopeBorder guifg=' .. border_colour)
 
+  -- Change default colour for Vim folds.
+  vim.cmd('highlight Folded guifg=' .. cp.flamingo .. ' guibg=' .. cp.black2)
+
 end
