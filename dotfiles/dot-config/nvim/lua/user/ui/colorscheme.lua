@@ -19,4 +19,9 @@ if vim.fn.empty('~/.config/nvim/plugged/catppuccin') ~= 1 then
   -- Change default colour for Vim folds.
   vim.cmd('highlight Folded guifg=' .. cp.flamingo .. ' guibg=' .. cp.black2)
 
+  -- Change default colour for search highlights.
+  vim.cmd('highlight Search guifg=' .. cp.red .. ' guibg=' .. cp.black1)
+  vim.cmd('highlight IncSearch guifg=' .. cp.red .. ' guibg=' .. cp.black1)
+  vim.cmd('highlight Substitute guifg=' .. cp.red .. ' guibg=' .. cp.black1)
+
 end

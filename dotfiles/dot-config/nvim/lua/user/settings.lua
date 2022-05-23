@@ -11,6 +11,7 @@ local settings = {
   completeopt = 'menuone,noinsert,noselect', -- Saner completion experience.
   foldcolumn = 'auto',                       -- Resize to the minimum amount of folds to display.
   history = 5000,                            -- Remember more command-line history.
+  hlsearch = false,                          -- Disable search highlighting by default.
   ignorecase = true,                         -- Case-insensitive search.
   lazyredraw = true,                         -- Do not redraw screen while executing macros, etc.
   list = true,                               -- Enable list mode.
