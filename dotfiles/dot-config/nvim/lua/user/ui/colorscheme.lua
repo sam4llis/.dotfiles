@@ -5,23 +5,10 @@
 --   \___\___/|_|\___/|_|  |___/\___|_| |_|\___|_| |_| |_|\___(_)_|\__,_|\__,_|
 
 if vim.fn.isdirectory(vim.fn.expand('$HOME') .. '~/.config/nvim/plugged/catppuccin') == 1 then
+  vim.g.catppuccin_flavour = "mocha"
   vim.cmd('colorscheme catppuccin')
-  local cp = require('catppuccin.core.color_palette')
+end
 
-  -- Increase border visibility.
-  vim.cmd('highlight VertSplit guifg=' .. cp.black4)
-
-  -- Change default colour for floating window and nvim-telescope borders.
-  local border_colour = cp.gray1
-  vim.cmd('highlight FloatBorder guifg=' .. border_colour)
-  vim.cmd('highlight TelescopeBorder guifg=' .. border_colour)
-
-  -- Change default colour for Vim folds.
-  vim.cmd('highlight Folded guifg=' .. cp.flamingo .. ' guibg=' .. cp.black2)
-
-  -- Change default colour for search highlights.
-  vim.cmd('highlight Search guifg=' .. cp.red .. ' guibg=' .. cp.black1)
-  vim.cmd('highlight IncSearch guifg=' .. cp.red .. ' guibg=' .. cp.black1)
-  vim.cmd('highlight Substitute guifg=' .. cp.red .. ' guibg=' .. cp.black1)
-
+if vim.fn.isdirectory(vim.fn.expand('$HOME') .. '/Documents/nvim-plugins/nvim-tundra') == 1 then
+  require('nvim-tundra').setup()
 end

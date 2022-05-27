@@ -45,9 +45,6 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug('nvim-telescope/telescope.nvim')
   Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 
-  -- Colorschemes.
-  Plug('catppuccin/nvim', { as = 'catppuccin' })
-
   -- Miscellaneous.
   Plug('lewis6991/gitsigns.nvim')
   Plug('neovim/nvim-lspconfig')
@@ -56,5 +53,6 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   -- My Plugins.
   Plug('~/Documents/nvim-plugins/nvim-buoy')
   Plug('~/Documents/nvim-plugins/nvim-stratus')
+  Plug('~/Documents/nvim-plugins/nvim-tundra')
 
 vim.call('plug#end')
