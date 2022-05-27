@@ -48,6 +48,7 @@ function Terminal.run_active_buffer(cmd, save)
   end
 
   Window.new():open()
+  vim.cmd('startinsert')
   vim.fn.termopen(cmd .. ' ' .. filename)
 end
 
