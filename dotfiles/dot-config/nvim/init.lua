@@ -18,6 +18,7 @@ require('user.utils.whitespace')
 -- Setup plugins.
 require('user.setup.treesitter')
 require('user.setup.lsp')
+require('user.setup.null-ls')
 require('user.setup.diagnostics')
 require('user.setup.telescope')
 require('user.setup.gitsigns')
@@ -27,3 +28,5 @@ require('user.setup.projectionist')
 require('user.ui.colorscheme')
 require('user.ui.statusline')
 
+-- TODO: Try AutoPEP8 using null-ls.
+-- TODO: Change look of Telescope (top-bottom view and UI to look like that Reddit post).

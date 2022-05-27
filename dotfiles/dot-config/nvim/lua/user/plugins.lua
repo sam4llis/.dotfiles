@@ -51,6 +51,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   -- Miscellaneous.
   Plug('lewis6991/gitsigns.nvim')
   Plug('neovim/nvim-lspconfig')
+  Plug('jose-elias-alvarez/null-ls.nvim')
 
   -- My Plugins.
   Plug('~/Documents/nvim-plugins/nvim-buoy')
