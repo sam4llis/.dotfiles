@@ -57,5 +57,6 @@ toggle_fstring = function()
 end
 
 vim.keymap.set('n', '<leader>tf', toggle_fstring, { noremap = true })
+vim.api.nvim_create_user_command('Fstring', toggle_fstring, {})
 
 EOF
