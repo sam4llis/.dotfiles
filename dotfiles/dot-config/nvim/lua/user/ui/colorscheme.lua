@@ -4,7 +4,7 @@
 --  | (_| (_) | | (_) | |  \__ \ (__| | | |  __/ | | | | |  __/_| | |_| | (_| |
 --   \___\___/|_|\___/|_|  |___/\___|_| |_|\___|_| |_| |_|\___(_)_|\__,_|\__,_|
 
-if vim.fn.empty('~/.config/nvim/plugged/catppuccin') ~= 1 then
+if vim.fn.isdirectory(vim.fn.expand('$HOME') .. '~/.config/nvim/plugged/catppuccin') == 1 then
   vim.cmd('colorscheme catppuccin')
   local cp = require('catppuccin.core.color_palette')
 
