@@ -13,6 +13,11 @@ end
 --
 -- Open Lua files via `gf` command.
 --
+if vim.fn.has('nvim-0.8.0') ~= 1 then
+  vim.api.nvim_err_writeln('The Lua `gf` mapping requires Neovim 0.8.0.')
+  vim.api.nvim_err_writeln('Please update your Neovim.')
+  return
+end
 
 --
 -- @desc
@@ -130,9 +135,7 @@ function _G.search_for_path(v_fpath)
   -- Substitute all `.` characters in `v_fpath` to create a real filename path.
   local fpath = vim.fs.normalize(string.gsub(v_fpath, '[.]', '/'))
 
-  -- Search for the required module, and return it if found.
-  local target = search_paths_for_file(fpath)
-  if target then return target end
+  return search_paths_for_file(fpath)
 end
 
 
