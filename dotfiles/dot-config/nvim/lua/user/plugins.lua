@@ -54,5 +54,6 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug('~/Documents/nvim-plugins/nvim-buoy')
   Plug('~/Documents/nvim-plugins/nvim-stratus')
   Plug('~/Documents/nvim-plugins/nvim-tundra')
+  Plug('~/Documents/nvim-plugins/nvim-lua-gf')
 
 vim.call('plug#end')
