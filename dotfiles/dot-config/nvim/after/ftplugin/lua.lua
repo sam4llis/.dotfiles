@@ -127,8 +127,8 @@ end
 --   module. Otherwise, `nil` is returned.
 --
 function _G.search_for_path(v_fpath)
-  -- Substitute all `.` characters in v_fpath to create a real filename path.
-  local fpath = string.gsub(v_fpath, '[.]', get_separator())
+  -- Substitute all `.` characters in `v_fpath` to create a real filename path.
+  local fpath = vim.fs.normalize(string.gsub(v_fpath, '[.]', '/'))
 
   -- Search for the required module, and return it if found.
   local target = search_paths_for_file(fpath)
