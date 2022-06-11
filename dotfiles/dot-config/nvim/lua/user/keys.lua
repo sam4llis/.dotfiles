@@ -24,14 +24,6 @@ vim.api.nvim_set_keymap('n', '<leader>bt', ':lua require("user.utils.whitespace"
 vim.api.nvim_set_keymap('v', '<leader>s', ':sort<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>S', ':sort!<CR>', { noremap = true, silent = true })
 
-
--- TODO: abbreviation.
-vim.api.nvim_set_keymap('i', '`t ', "'TODO(' . $USER . '):'", { expr = true })
--- NOTE: abbreviation.
-vim.api.nvim_set_keymap('i', '`n ', "'NOTE(' . $USER . '):'", { expr = true })
--- FIXME: abbreviation.
-vim.api.nvim_set_keymap('i', '`f ', "'FIXME(' . $USER . '):'", { expr = true })
-
 -- Align and prettify table entries and columns.
 vim.api.nvim_set_keymap('v', '<leader>c', ':%!column -t<CR>', { noremap = true, silent = true })
 
