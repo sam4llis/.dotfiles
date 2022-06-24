@@ -1,7 +1,7 @@
 local opts
 
 -- Angular applications.
-if vim.fn.filereadable('src/app/app.module.ts') == 1 then
+if vim.fn.filereadable('angular.json') == 1 then
   opts = {
     ['src/app/'] = {
       ['*.component.html'] = {
@@ -17,8 +17,36 @@ if vim.fn.filereadable('src/app/app.module.ts') == 1 then
       },
     },
     ['./'] = {
+      ['.gitignore'] = {
+        type = 'gitignore'
+      },
+      ['package.json'] = {
+        type = 'package'
+      },
       ['tailwind.config.js'] = {
         type = 'tailwind'
+      },
+    },
+  }
+end
+
+-- NestJS applications.
+if vim.fn.filereadable('nest-cli.json') == 1 then
+  opts = {
+    ['src/'] = {
+      ['*.controller.ts'] = {
+        alternate = '{}.service.ts'
+      },
+      ['*.service.ts'] = {
+        alternate = '{}.controller.ts'
+      },
+    },
+    ['./'] = {
+      ['.gitignore'] = {
+        type = 'gitignore'
+      },
+      ['package.json'] = {
+        type = 'package'
       },
     },
   }
