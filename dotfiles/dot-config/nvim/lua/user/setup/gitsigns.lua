@@ -12,10 +12,11 @@ require('gitsigns').setup {
     topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
     changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
   },
-  signcolumn = true,  -- :Gitsigns toggle_signs
-  numhl      = false, -- :Gitsigns toggle_numhl
-  linehl     = false, -- :Gitsigns toggle_linehl
-  word_diff  = false, -- :Gitsigns toggle_word_diff
+  signcolumn = false,   -- :Gitsigns toggle_signs
+  numhl      = true,    -- :Gitsigns toggle_numhl
+  linehl     = true,    -- :Gitsigns toggle_linehl
+  show_deleted = false, -- :Gitsigns toggle_deleted
+  word_diff  = false,   -- :Gitsigns toggle_word_diff
   watch_gitdir = {
     interval = 1000,
     follow_files = true
