@@ -35,11 +35,7 @@ vim.api.nvim_set_keymap('n', '<leader>fn', ':lua require("telescope.builtin").fi
 
 -- nvim-buoy: Floating terminal mappings.
 -- FIXME: Change to nvim-buoy.
--- vim.api.nvim_set_keymap('n', '<C-Z>', ':lua require("terminal"):toggle()<CR>', { noremap = true, silent = true })
 vim.api.nvim_create_user_command('ToggleFloatingTerminal', ':lua require("terminal"):toggle()<CR>', {})
--- vim.api.nvim_set_keymap('n', '<C-z>', ':lua require("nvim-buoy").new({ percentage = 0.5 }):toggle()<CR>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('t', '<C-Z>', '<C-\\><C-n>:lua require("terminal"):toggle()<CR>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('t', '<C-z>', ':lua require("nvim-buoy"):toggle()<CR>', { noremap = true, silent = true })
 
 -- nvim-buoy: Floating note mappings.
 vim.api.nvim_set_keymap('n', '<leader>n', ':lua require("note"):toggle(true)<CR>', { noremap = true, silent = true })
