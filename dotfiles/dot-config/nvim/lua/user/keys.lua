@@ -43,3 +43,7 @@ vim.api.nvim_create_user_command('ToggleFloatingTerminal', ':lua require("termin
 
 -- nvim-buoy: Floating note mappings.
 vim.api.nvim_set_keymap('n', '<leader>n', ':lua require("note"):toggle(true)<CR>', { noremap = true, silent = true })
+
+-- Gitsigns mappings.
+vim.api.nvim_create_user_command("Stage", "'<,'>Gitsigns stage_hunk", { range = true })
+vim.api.nvim_create_user_command("ToggleDeleted", ":Gitsigns toggle_deleted", {})
