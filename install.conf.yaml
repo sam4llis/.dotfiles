@@ -8,6 +8,8 @@
     ~/.config/nvim: dotfiles/dot-config/nvim
     ~/.zshrc: dotfiles/dot-zshrc
     ~/.vim: dotfiles/dot-vim
+    ~/.tmux.conf: dotfiles/dot-tmux-conf
+    ~/.tmux: dotfiles/dot-tmux
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
