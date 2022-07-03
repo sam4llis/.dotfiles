@@ -5,7 +5,7 @@ if vim.fn.has('nvim-0.5.0') ~= 1 then
 end
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
+  ensure_installed = { },
   highlight = {
     enable = true,
     custom_captures = {
