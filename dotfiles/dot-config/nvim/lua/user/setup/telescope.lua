@@ -14,11 +14,29 @@ require('telescope').setup{
         ["<esc>"] = actions.close,
       },
     },
-    layout_strategy = "vertical",
+    prompt_prefix = "     ",
+    selection_caret = "  ",
+    entry_prefix = "  ",
     sorting_strategy = "ascending",
     layout_config = {
-      prompt_position = 'top',
-    },
+            horizontal = {
+                prompt_position = "top",
+                preview_width = 0.55,
+                results_width = 0.8,
+            },
+             vertical = {
+                mirror = false,
+            },
+            width = 0.8,
+            height = 0.8,
+            preview_cutoff = 120,
+  },
+
+    -- layout_strategy = "vertical",
+    -- sorting_strategy = "ascending",
+    -- layout_config = {
+    --   prompt_position = 'top',
+    -- },
   },
   pickers = {},
   extensions = {
@@ -31,4 +49,4 @@ require('telescope').setup{
   },
 }
 
-require('telescope').load_extension('fzf')
+-- require('telescope').load_extension('fzf')
